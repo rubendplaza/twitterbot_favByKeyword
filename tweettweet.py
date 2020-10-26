@@ -11,19 +11,19 @@ auth.set_access_token(keys.accessToken,
 
 api = tweepy.API(auth)
 user = api.me()
-print(user.name)
-print(user.screen_name)
-print(user.followers_count)
+# print(user.name)
+# print(user.screen_name)
+# print(user.followers_count)
 
 
 searchString = 'Python'
-numOfTweets = 5
+numOfTweets = 3
 
 for tweet in tweepy.Cursor(api.search, searchString).items(numOfTweets):
     try:
         tweet.favorite()
         # tweet.retweet()
-        print(f'I liked that tweet: {tweet.text}')
+        print(f'I liked that tweet: {tweet.text}\n')
     except tweepy.TweepError as e:
         print(e.reason)
     except StopIteration:
