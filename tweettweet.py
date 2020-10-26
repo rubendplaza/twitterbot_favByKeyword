@@ -1,10 +1,13 @@
 import tweepy
 import time
+import keys
 
-auth = tweepy.OAuthHandler('CNfxkwoRGEBPRjFpWdpT4JVpE',
-                           'I4u1jtENv08G515bt4hlRefksuutHvh16iaTKKQmijNKmpeBan')
-auth.set_access_token('1271899099143512064-mVywX9wt3fy4HFnvugw1BMLBK63Iwx',
-                      'bsc7wTHRJwxKimfWStORr5AbnmVwRCa4eLzyICrGG598A')
+# User will need to create twitter developer account to get keys
+# Once user receives keys, make a "keys.py" file and make four string variables named apiKey, apiSecretKey, accessToken, secretAccessToken and fill with corresponding keys.
+auth = tweepy.OAuthHandler(keys.apiKey,
+                           keys.apiSecretKey)
+auth.set_access_token(keys.accessToken,
+                      keys.secretAccessToken)
 
 api = tweepy.API(auth)
 user = api.me()
@@ -13,7 +16,7 @@ print(user.screen_name)
 print(user.followers_count)
 
 
-searchString = 'Ruben Plaza'
+searchString = 'Python'
 numOfTweets = 5
 
 for tweet in tweepy.Cursor(api.search, searchString).items(numOfTweets):
